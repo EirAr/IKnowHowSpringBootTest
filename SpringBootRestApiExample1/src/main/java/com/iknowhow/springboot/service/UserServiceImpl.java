@@ -3,7 +3,6 @@ package com.iknowhow.springboot.service;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
@@ -21,44 +20,42 @@ public class UserServiceImpl implements UserService{
 	UserRepository userRepository;
 		
 	@PersistenceContext
-	 private EntityManager entityManager;
+	 private EntityManager em;
 	
 	@Override
 	public User findById(long id) {
-		return entityManager.find(User.class, id);
+		return em.find(User.class, id);
 
 	}
 
 	@Override
 	public User findByName(String name) {
-		return entityManager.find(User.class, name);
+		return em.find(User.class, name);
 	}
 
 	@Override
 	public void saveUser(User user) {
-		entityManager.persist(user);
+		em.persist(user);
 
 	}
 
 	@Override
 	public void updateUser(User user) {
-		entityManager.merge(user);
+		em.merge(user);
 	}
 
 	@Override
 	public void deleteUserById(long id) {
 		User user = findById(id);
 		if (user != null) {
-			entityManager.remove(user);
+			em.remove(user);
 		}
 	}
 
 	@Override
 	public List<User> findAllUsers() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("");
-		EntityManager em = emf.createEntityManager();
-		//EntityTransaction userTransaction = em.getTransaction();
-		return em.createNamedQuery("EmailDomainTrust.getEmailDomains", User.class).getResultList();
+		
+		return userRepository.findAll();
 	}
 	
 	@Override
