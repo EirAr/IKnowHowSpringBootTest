@@ -2,17 +2,13 @@ package com.iknowhow.springboot.service;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.iknowhow.springboot.model.User;
 import com.iknowhow.springboot.repository.UserRepository;
+import org.springframework.stereotype.Service;
 
-
-@Service("userService")
+@Service
 public class UserServiceImpl implements UserService{
 	
 	@Autowired
@@ -21,12 +17,10 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User findById(long id) {
 		 return userRepository.findOne(id);
-
 	}
 
 	@Override
 	public User findByName(String name) {
-		
 		return null;
 	}
 
@@ -48,8 +42,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public List<User> findAllUsers() {
-		
-		return userRepository.findAll();
+		return null;
 	}
 	
 	@Override
@@ -61,7 +54,5 @@ public class UserServiceImpl implements UserService{
 	public boolean isUserExist(User user) {
 		return userRepository.exists(user.getId());
 	}
-	
-
 	
 }

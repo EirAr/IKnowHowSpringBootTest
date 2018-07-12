@@ -109,9 +109,10 @@ public class RestApiController {
 		if(!allUsers.isEmpty()) {
 			System.out.println("Users were not deleted. Please try again.");
 			return new ResponseEntity<User>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		}else {
 		
-		return new ResponseEntity<User>(HttpStatus.OK);
+			return new ResponseEntity<User>(HttpStatus.OK);
+		}
 	}
 
 }
