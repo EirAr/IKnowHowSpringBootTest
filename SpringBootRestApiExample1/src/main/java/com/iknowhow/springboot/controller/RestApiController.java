@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.iknowhow.springboot.model.User;
-import com.iknowhow.springboot.repository.UserRepository;
 import com.iknowhow.springboot.service.UserService;
 
 @RestController
